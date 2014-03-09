@@ -16,12 +16,12 @@ CYGCONF_ARGS="
 	--disable-host-tool
 	--enable-indirect-deps
 	--program-prefix=${TOOLCHAIN_TARGET}-
-	--with-pc-path=${TOOLCHAIN_SYSROOT}/mingw/lib/pkgconfig:${TOOLCHAIN_SYSROOT}/mingw/share/pkgconfig:/usr/share/pkgconfig
-	--with-system-include-path=${TOOLCHAIN_SYSROOT}/mingw/include
-	--with-system-library-path=${TOOLCHAIN_SYSROOT}/mingw/lib
+	--with-pc-path=${TOOLCHAIN_LIBDIR}/pkgconfig:${TOOLCHAIN_DATADIR}/pkgconfig:/usr/share/pkgconfig
+	--with-system-include-path=${TOOLCHAIN_INCLUDEDIR}
+	--with-system-library-path=${TOOLCHAIN_LIBDIR}
 "
 
 src_install() {
 	cd ${B}
-	cyginstall m4dir=${TOOLCHAIN_SYSROOT}/mingw/share/aclocal
+	cyginstall m4dir=${TOOLCHAIN_DATADIR}/aclocal
 }
